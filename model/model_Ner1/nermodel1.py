@@ -45,6 +45,8 @@ def text_to_token(text,path):
 
     tokenizer = BertTokenizerFast.from_pretrained('D:/Paper-medical/Web_steamlist/model/model_Ner1/tokenizer')
     texts = text[0].split('.')
+    # texts = [text+'.' for text in texts if text != '']
+
     max_len = 236
     texts_token = [tokenizer(seq, padding='max_length', max_length=max_len, truncation=True, return_tensors="pt") for seq in texts]
     word_ids = [token.word_ids() for token in texts_token] 
